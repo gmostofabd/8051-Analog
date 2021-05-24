@@ -1,0 +1,318 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+	<link rel="stylesheet" href="assets/css/style.css">
+    <meta charset="utf-8">
+	<meta name="Keywords" content="Microcontroller,8051,Assembly,Programming,Code,Proteus">
+	<title>8051 Analog Reading</title>
+</head>
+
+
+<body  bgcolor=white>
+
+	<div id="header_common"><img src="assets/images/github_banner.png" alt="common_header" width="1083" height="150"></div>
+	<div id="topic_container"><h2>Exp. 06: Potentiometer (Analog) Reading with 8051</h2></div>
+
+
+  <table align = center width=1000 height=1000  bgcolor= white>
+	  <tr>
+	    <td width=200 bgcolor=white valign=top>
+
+		    <div id="exp_lst_cont">
+            <ol><h3>8051 Experiment List:</h3>
+              <li><a href="https://gmostofabd.github.io/8051-LED/">LED Blink</a></li>
+              <li><a href="https://gmostofabd.github.io/8051-Push-Button/">Push Button Interfacing</a></li>
+                <li><a href="https://gmostofabd.github.io/8051-7Segment/">Seven Segment Display Interfacing</a></li>
+                <li>LED Dot Matrix Display Interfacing</li>
+                <li><a href="https://gmostofabd.github.io/8051-LCD/">LCD Interfacing</a></li>
+                <li><a href="https://gmostofabd.github.io/8051-Analog/">Potentiometer (or Analog) Reading</a></li>
+                <li><a href="https://gmostofabd.github.io/8051-Analog/">Key Pad Matrix Interfacing</a></li>
+                <li><a href="https://gmostofabd.github.io/dc-motor-8051/">DC Motor Interfacing</a></li>
+                <li><a href="https://gmostofabd.github.io/stepper-motor-8051/">Stepper Motor Interfacing</a></li>
+                <li>RTC Interfacing</li>
+                <li>EEPROM Interfacing</li>
+                <li>Bluetooth interfacing</li>
+                <li>7 Segment Clock</li>
+                <li>Serial Communication</li>
+            </ol>
+        </div>
+
+        <div id="proj_lst_cont">
+            <ol><h3>8051 Projects:</h3>
+              <li>Access Control System</li>
+              <li>6 Digit Clock</li>
+              <li>IR Remote Load ON OFF</li>
+              <li>Line Follower</li>
+              <li>Incubator Controller</li>
+            </ol>
+        </div>         
+
+    </td>
+
+
+
+	  <td width=600 align=center valign=top style="padding-left: 10px; padding-right: 10px;">
+		
+		<h3>Introduction:</h3>
+          <blockquote>
+		  <p>
+        We live in an analog world, surrounded by digital devices. Everything we see, feel or 
+        measure is analog in nature such as light, temperature, speed, pressure etc. But most 
+        of the electronic devices around us starting from a simple digital watch to a super 
+        computer are all digital devices. So, we often need to measure and process signals 
+        that vary; these are called <strong>analog signals</strong>.
+            
+        <br><br>So, it is obvious that we need something that could convert these analog 
+        parameters to digital value for a microcontroller or micro-processor to understand 
+        it. This something is called the <strong>ADC</strong> or <strong>analog to digital converter</strong>. 
+        These ADC circuits can be found as 
+        an individual ADC ICs by themselves or embedded into a microcontrollers. As 8051 
+        microcontrollers do not have their internal adc, we will use an external adc IC 
+        to do the same. In this article we will learn how to read analog signals using 
+        8051 microcontroller.
+	      </p>
+          </blockquote>
+
+        <h3>Hardware Discussion : ADC IC AD0804</h3>
+	
+            <div class="box_70"><img src="assets/images/adc_model2.png"/></div>
+            <div class="capt_cont">Fig: Analog to Digital Conversion and AD0804 ADC Chip</div>
+
+
+
+
+      <h3>FEATURES OF ADC 0804 :</h3>
+            
+      <ul>
+          <li>8 bit resolution</li>
+          <li>Differential analogue voltage inputs</li>
+          <li>0-5V input voltage range (No zero adjustment).</li>
+          <li>Built-in clock generator</li> 
+          <li>Voltage at Vref/2 (pin9) can be externally adjusted</li>
+          <li>convert smaller input voltage spans to full 8 bit resolution.</li>
+          <li>This module is available in twenty pinouts PDIP (dual inline packaging) and SOIC (small outline integrated circuits) packaging.</li>
+          <li>This module can easily connect with other microcontroller and can also work alone in any circuitry.</li>
+      </ul>
+
+      <h3>PIN DESCRIPTION: AD0803/AD0804/MCPXX</h3>
+
+        <div class="box_80"><img src="assets/images/adc0804.png" alt="LCD mdules"></div>
+        <div class="capt_cont">Fig: AD0804 pin out and circuit diagram</div>
+
+        <ul>
+          <li>PIN-1   – <strong>CS</strong> (chip select) It is an active low pin and is used to activate ADC0804. 
+            This a a feature of energy saving. In our example we will connect this pin to ground.</li>
+          <li>PIN-2   – <strong>RD</strong> (Read) It is an input pin and is active low. ADC stores the result in 
+            an internal register after conversion of analog data. This pin helps to get the data out of the ADC0804. 
+            When CS=0, high to low pulse is given to RD pin, then digital output comes on the pins D0-D7.</li>
+          <li>PIN-3   – <strong>WR</strong> (Write) It is an input pin and is active low which is used to initiate 
+            the ADC to start the conversion process. When CS=0, WR makes a low to high transition, then ADC starts 
+            the conversion process.</li>
+          <li>PIN-4   – <strong>Clock In</strong> (CLK IN) Connect external clock to this pin.</li>
+          <li>PIN-5   – <strong>INTR</strong> (Interrupt) This pin automatically goes low when conversion is done by 
+            ADC0804 or when digital equivalent of analog input is ready.</li>
+          <li>PIN-6   – <strong>Vin +</strong> connect input analog sensor pin/input voltage to this pin.</li>
+          <li>PIN-7   – <strong>Vin -</strong> ground this pin.</li>
+          <li>PIN-8   – <strong>AGND</strong> (Analog Ground)  ground this pin.</li>
+          <li>PIN-9   – <strong>Vref/2</strong> set the reference voltage for analog input (Very important pin discussed below)</li>
+          <li>PIN-10   – <strong>DGND</strong> (Digital Ground)  ground this pin</li>
+          <li>PIN-11 to PIN-18  – <strong>Data</strong> out*put pins.</li>
+          <li>PIN-19  – <strong>CLK R</strong> (Clock R) Used with clock IN pin when internal clock source is used.</li>
+          <li>PIN-20  – <strong>Vcc</strong> +5 volts</li>
+        </ul>
+
+
+
+
+        <h3>PIN DESCRIPTION: AD0803/AD0804/MCPXX</h3>
+
+        <ul>
+          <li><strong>CS</strong> (chip select) low(0) to activate the adc0804.</li>
+          <li><strong>WR</strong> (write) pin low (0).</li>
+          <li><strong>WR</strong> (write) pin high (1) after some delay small delay. This low to high impulse at WR pin starts your conversion.</li>
+          <li>Now check the <strong>INTR</strong>(interrupt) pin if it is high(1) conversion is running if it is low(0) the conversion is over.</li> 
+          <li><strong>RD</strong> =low(0) and after some time high(1). This will bring the converted value to the 8 data output pins of ADC 0804.</li>
+        </ul>
+
+
+
+
+
+
+        <h3>Variable Resistor :</h3>
+        <blockquote>
+        <p>
+          We’ve worked with regular resistors before, and variable resistors do pretty much the 
+          same thing. The only difference here is we can change the resistance value of variable 
+          resistors. There’s many different ways they can operate - from dials to sliders and all 
+          sorts of in-between. They’re used as sensors, adjustors, and trigger mechanisms. 
+          For us, we’ll be using a dial based variable resistor called a potentiometer to act as 
+          an adjustment knob for an LED.
+        </p>
+        </blockquote>
+
+        <div class="box_ckt_diag"><img src="assets/images/vr2.png"/></div>
+        <div class="capt_cont">Fig: Variable Resistor and Potentiometer</div>
+
+
+
+
+
+        <h3>Variable Resistor :</h3>
+        <blockquote>
+        <p>
+          <strong> Potentiometer :</strong> The trimmer potentiometer, also known as a trimpot, 
+          is essentially two variable resistors (R1 and R2) connected in series. The total 
+          resistance of the two variable resistors (R1 + R2) will always be the same as the 
+          value of the trimpot, in our case 10K. However, we can turn the knob on the trimpot 
+          to decrease the resistance of one resistor and at the same time increase the resistance 
+          of the other resistor. If we turn the knob to either end, one resistor will be 0R 
+          will the other one will be 10K.
+          
+          <br><br>Potentiometers have a range of resistance. They can be attuned from zero 
+          ohms to whatever maximum resistance that is specific to it. For example, a potentiometer 
+          of 10 k can be adjusted from 0 ohm to its maximum of 10 k.
+        </p>
+        </blockquote>
+
+
+
+
+        <h3>Circuit Diagram :</h3>
+        <div class="box_ckt_diag"><img src="assets/images/ADC0804_LED_8051_Ckt1.png" alt="ckt_diagram" width="600" height="350"></div>
+        <div class="capt_cont">Fig: ADC 0804 with AT89S51</div>
+
+        <h3>Circuit Discussion :</h3>
+
+        <blockquote>
+            <p>Port 1 is used as input port and port 0 is used as output port. Potentiometer is used 
+              to adjust the voltage.  If the analogue input voltage is 5V then all LEDs will glow 
+              indicating 11111111 in binary which is the equivalent of 255 in decimal. If the voltage 
+              is zero, no LED will glow.
+                
+              <br><br>When full voltage given:(Output =11111111)
+            </p>
+            </blockquote>
+
+
+        <h3>Assembly Program : <a href="https://github.com/gmostofabd/8051-7Segment/blob/main/codes/7seg_1d_8051.asm">ADC0804_8051.asm</a></h3>
+        <div class="prog_cont"><embed type="text/html" src="codes/ADC0804_8051.asm"  width="500" height="500"></div>
+
+        <h3>Code Discussion:</h3>
+            <blockquote>
+            <p>
+            </p>
+            </blockquote>
+
+
+
+        <h3>Post Run Discussion:  LED Chaser (Code Optimization)</h3>
+        <blockquote>
+        <p>
+          <strong>LM35</strong> is an analog, linear temperature sensor whose output voltage varies 
+          linearly with change in temperature. LM35 is three terminal linear temperature sensor from 
+          National semiconductors. It can measure temperature from \textbf{-55 degree celsius to +150 
+            degree celsius.} The voltage output of the LM35 increases 10mV per degree Celsius rise 
+            in temperature. LM35 can be operated from a 5V supply and the stand by current is less 
+            than 60uA. The pin out of  LM35 is shown in the figure below.
+        </p>
+        </blockquote>
+
+        <div class="box_ckt_diag"><img src="assets/images/lm35-pinout.jpg" alt="ckt_diagram" width="600" height="350"></div>
+        <div class="capt_cont">Fig: LM35 Pin out</div>
+        <p>
+          So that’s all info you need about LM35 for this particular temperature display project 
+          using a microcontroller. So lets get to LM35 temperature sensor interfacing with our 8051.
+        </p>
+
+        <h3>Circuit Diagram :</h3>
+        <div class="box_ckt_diag"><img src="assets/images/lm35_ckt.png" alt="ckt_diagram" width="600" height="350"></div>
+        <div class="capt_cont">Fig: LM35 Circuit</div>
+
+        <h3>Assembly Program : <a href="https://github.com/gmostofabd/8051-7Segment/blob/main/codes/7seg_1d_8051.asm">LM35_8051.asm</a></h3>
+        <div class="prog_cont"><embed type="text/html" src="codes/LM35_8051.asm"  width="500" height="500"></div>
+
+      </td>
+
+	  <td valign=top>
+		
+      <div class="box_this_lesson">
+        <h3>This lesson includes:</h3>
+        <ol>
+          <li>Introduction</li>
+          <li>Hardware Discussion</li>
+          <li>Circuit Diagram</li>
+          <li>Assembly Code</li>
+          <li>Post Run Discussion</li>
+          <li>Exercises</li>
+          <li>Tips and Tricks</li>
+        </ol>
+      </div>
+
+
+      <div class="vdo_lst_cont">
+          <h3>Lesson Video</h3>
+          <iframe width="155" height="100"
+          src="https://www.youtube.com/embed/tgbNymZ7vqY">
+            </iframe>
+      </div>
+
+      <div class="box_this_lesson">
+          <h3>Important Downloads</h3>
+          <ol class="inside">
+            <li>Proteus 8.7</li>
+            <li>MIDE-51 IDE</li>
+            <li>AVRDUDES</li>
+          </ol>
+      </div>
+
+
+      <div class="box_this_lesson">
+          <span><b>Lesson Contents</b></span>
+          <ol>
+              <li>Circuit Diagram (Proteus)</li>
+              <li>Lesson PDF</li>
+              <li>7seg_1d_8051.asm</li>
+              <li>7seg_2d_8051.asm</li>
+              <li>7segment Datasheet PDF</li>
+              <li>Exercise Solutions</li>
+          </ol>
+      </div>
+
+    </td>
+
+
+	</tr>
+         
+  </table>
+
+  <table width=1000 height=50 align= center border="1">
+	  <tr>
+			<td>Prev topic: Push Button Interfacing with 8051</td>
+			<td>Next topic: LED Matrix interfacing with 8051</td>
+		</tr>
+  </table>
+
+	<div id="footer_common">
+    <div class="prj_footer_cell">
+      <font face="Verdana, Arial, Helvetica, sans-serif" color="#0000ff" size="2" ><strong>Top Tutorial sites </strong></font>
+      <div id="navcontainer">
+        <ul >
+          <li id="active"><a href="http://www.melab-bd.com/home.html"><strong>Circuit Today</strong></a></li>
+          <li><a href="http://www.melab-bd.com/about.html"><strong>Radio Electronics</strong></a></li>
+          <li><a href="http://www.melab-bd.com/product.html"><strong>MikroE</strong></a></li>
+          <li><a href="http://www.melab-bd.com/project.html"><strong>8051 Projects</strong></a></li>
+          <li><a href="http://www.melab-bd.com/trainings.html"><strong>101 Components</strong></a></li>
+         </ul>
+      </div>	
+    </div>
+  </div>
+    
+
+</body>
+
+
+</html>
