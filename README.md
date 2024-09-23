@@ -1,20 +1,17 @@
-# 8051 Analog Reading
+# # 8051 Analog Reading
 
 This repository guides you through reading an analog value from a potentiometer using the **8051 Microcontroller**. We will first convert the analog voltage to its binary equivalent and display it on an **8-bit LED bar graph**. Next, we will advance the analog reading to an **LCD** for clearer visualization.
-
 
 ## ⚙️ **Project Overview**
 
 The project demonstrates how to interface a potentiometer with the **AT89C51** Microcontroller and convert the analog voltage into a digital representation. The readings are displayed both on an LED bar graph and an alphanumeric LCD, showcasing the capabilities of the **8051 MCU** family in handling analog signals.
 
-
-
 <p align="center">
-  <img src="https://github.com/gmostofabd/8051-Analog/blob/23bd514de03203891672ca09df32e5ae9720b674/assets/images/ADC0804_LED_8051_Ckt1.png" alt="AT89C51 Calculator" width="70%">
+  <img src="https://github.com/gmostofabd/8051-Analog/blob/23bd514de03203891672ca09df32e5ae9720b674/assets/images/ADC0804_LED_8051_Ckt1.png" alt="Circuit Diagram 1" width="70%">
 </p>
 
 <p align="center">
-  <img src="https://github.com/gmostofabd/8051-Analog/blob/23bd514de03203891672ca09df32e5ae9720b674/assets/images/ADC0804_LED_8051_Ckt.png" alt="AT89C51 Calculator" width="70%">
+  <img src="https://github.com/gmostofabd/8051-Analog/blob/23bd514de03203891672ca09df32e5ae9720b674/assets/images/ADC0804_LED_8051_Ckt.png" alt="Circuit Diagram 2" width="70%">
 </p>
 
 ---
@@ -42,7 +39,6 @@ The project demonstrates how to interface a potentiometer with the **AT89C51** M
 | 🔌 **Hardware Integration**        | Designed for seamless integration with physical components                       |
 
 </div>
-
 
 ---
 
@@ -82,27 +78,22 @@ The **AD0804** ADC reads the voltage from the potentiometer and converts it into
 
 ---
 
-
 ## 🔗 **Additional Information**
 
 ### **Potentiometer Functionality**:
 The potentiometer's position determines the voltage supplied to the ADC, affecting the readings displayed on both the LED bar graph and the LCD.
 
-
 ---
-
 
 # 🌟 **AD0804 Analog-to-Digital Converter**
 The AD0804 ADC is a reliable and efficient choice for converting analog signals to digital form. Its simplicity and low power requirements make it ideal for a wide range of applications, from data acquisition systems to embedded solutions.
 
-
 ### Basic Circuit Diagram:
 
+
 <p align="center">
-  <img src="https://github.com/gmostofabd/8051-Analog/blob/23bd514de03203891672ca09df32e5ae9720b674/assets/images/adc_model1.png" alt="AT89C51 Calculator" width="40%">
+  <img src="https://github.com/gmostofabd/8051-Analog/blob/23bd514de03203891672ca09df32e5ae9720b674/assets/images/adc_model2.png" alt="AD0804 Circuit Diagram" width="60%">
 </p>
-
-
 
 ## 🛠️ **Key Features:**
 
@@ -121,7 +112,27 @@ The AD0804 ADC is a reliable and efficient choice for converting analog signals 
 </div>
 
 ---
+---
 
+## 📊 **AD0804 Pin Description**
+
+<div align="center">
+
+| Pin Number | Pin Name   | Description                                 |
+|------------|------------|---------------------------------------------|
+| 1          | V_ref     | Reference voltage input                     |
+| 2          | GND       | Ground connection                           |
+| 3          | Vin       | Analog input voltage from potentiometer     |
+| 4          | D0-D7     | Data output lines (8-bit)                  |
+| 5          | CS        | Chip select                                 |
+| 6          | RD        | Read control                                |
+| 7          | WR        | Write control                               |
+| 8          | ALE       | Address latch enable                        |
+| 9          | INTR      | Interrupt output for conversion completion   |
+
+</div>
+
+---
 
 ## 🤝 **Contributing**
 
@@ -141,4 +152,3 @@ For any inquiries or assistance, reach out at [mostofa.melab@gmail.com](mailto:m
 
 If you found this project helpful, give it a ⭐ on GitHub!
 
---- 
