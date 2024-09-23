@@ -76,10 +76,6 @@ The project demonstrates how to interface a potentiometer with the **AT89C51** M
 
 </div>
 
-<p align="center">
-  <img src="your-third-image-url.png" alt="AD0804 Circuit" width="70%">
-</p>
-
 ### **Circuit Explanation**:
 
 The **AD0804** ADC reads the voltage from the potentiometer and converts it into an 8-bit digital signal. This signal is then displayed on the LED bar graph, giving a visual representation of the voltage level. The same value is sent to the LCD for a numerical readout.
