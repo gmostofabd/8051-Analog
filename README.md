@@ -122,11 +122,6 @@ The AD0804 ADC is a reliable and efficient choice for converting analog signals 
 
 ---
 
-<p align="center">
-  <img src="https://github.com/gmostofabd/8051-Analog/blob/23bd514de03203891672ca09df32e5ae9720b674/assets/images/adc_resolution.png
-" alt="AT89C51 Calculator" width="70%">
-</p>
-
 
 ## 🤝 **Contributing**
 
