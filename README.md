@@ -13,9 +13,75 @@ This repository demonstrates how to read an analog value from a **potentiometer*
 
 ---
 
+## 🔑 **Keywords**
+
+**[AD0804](https://www.analog.com/en/products/ad0804.html)** | 
+**[8051 Microcontroller](https://www.atmel.com/products/microcontrollers/8051.aspx)** | 
+**[Analog-to-Digital Converter](https://en.wikipedia.org/wiki/Analog-to-digital_converter)** | 
+**[Assembly Language](https://en.wikipedia.org/wiki/Assembly_language)** | 
+**[Microcontroller Programming](https://en.wikipedia.org/wiki/Microcontroller)**
+
+---
+
+# 🌟 **AD0804 Analog-to-Digital Converter**
+The AD0804 ADC is a reliable and efficient choice for converting analog signals to digital form. Its simplicity and low power requirements make it ideal for a wide range of applications, from data acquisition systems to embedded solutions.
+
+### Basic Circuit Diagram:
+
+
+<p align="center">
+  <img src="https://github.com/gmostofabd/8051-Analog/blob/23bd514de03203891672ca09df32e5ae9720b674/assets/images/adc_model2.png" alt="AD0804 Circuit Diagram" width="60%">
+</p>
+
+## 🛠️ **Key Features:**
+
+<div align="center">
+
+| Feature                     | Description                                                             |
+|-----------------------------|-------------------------------------------------------------------------|
+| 🔢 **8-Bit Resolution**      | Converts analog signals to 256 discrete digital levels.                 |
+| ⚡ **Single-Supply Operation** | Works on a simple +5V supply for ease of use.                          |
+| ⏱️ **Fast Sampling Rate**     | Supports up to 10 kHz for moderate-speed applications.                 |
+| 📈 **Wide Input Voltage Range** | Typically 0V to V_REF for versatile applications.                     |
+| 🔌 **Internal Reference Voltage** | Reduces external components for simpler designs.                     |
+| 💻 **Easy Digital Interface**  | Parallel output makes it simple to connect with microcontrollers.      |
+| 💡 **Low Power Consumption**   | Ideal for portable and battery-operated devices.                       |
+
+</div>
+
+---
+
+## 📊 **AD0804 Pin Description**
+
+<div align="center">
+
+| Pin Number | Pin Name   | Description                                 |
+|------------|------------|---------------------------------------------|
+| 1          | V_ref     | Reference voltage input                     |
+| 2          | GND       | Ground connection                           |
+| 3          | Vin       | Analog input voltage from potentiometer     |
+| 4          | D0-D7     | Data output lines (8-bit)                  |
+| 5          | CS        | Chip select                                 |
+| 6          | RD        | Read control                                |
+| 7          | WR        | Write control                               |
+| 8          | ALE       | Address latch enable                        |
+| 9          | INTR      | Interrupt output for conversion completion   |
+
+</div>
+
+---
+
+
+
 ### **Understanding ADC0804**
 
+<p align="center">
+  <img src="https://github.com/gmostofabd/8051-Analog/blob/e5c98394239fc9e77b0fe4b371b81433b1ef98bd/assets/images/AD0804_Simulation1.png" alt="Circuit Diagram 1" width="70%">
+</p>
+
 **ADC0804** is an **8-bit ADC** capable of measuring up to **8 analog inputs** simultaneously, translating analog values into digital outputs ranging from 0 to 255. Utilizing a successive approximation converter based on a differential potentiometric ladder, the ADC0804 effectively translates continuous analog signals into discrete digital values. 
+
+
 
 **Why Use an ADC?**  
 Analog signals represent real-world phenomena but need conversion into a format that microcontrollers can process. Electronic devices operate primarily in the **frequency domain**, making ADCs crucial for translating these continuous signals into a digital format that can be interpreted by microprocessors.
@@ -25,22 +91,6 @@ Analog signals represent real-world phenomena but need conversion into a format 
 - **Conversion Speed**: Maximum speed of **110 µs**, regardless of internal or external clock use.
 - **Single Analog Input**: Converts a single analog signal into an 8-bit digital output.
 
-### **Key Components**:
-- **8051 Microcontroller**: The project’s central processing unit.
-- **ADC0804**: Converts analog signals to digital.
-- **Potentiometer**: Generates variable analog voltage.
-- **8-bit LED Bar Graph**: Visual representation of digital output.
-- **Alphanumeric LCD**: Displays analog values in a readable format.
-
-### **How It Works**:
-1. **Analog Signal Generation**: The potentiometer creates a variable voltage based on its position.
-2. **Analog-to-Digital Conversion**: The ADC0804 converts this analog voltage to an 8-bit digital value.
-3. **Output Display**:
-   - The digital value is presented on an **8-bit LED bar graph**.
-   - The same value is sent to the **LCD** for better clarity.
-
-### **Conclusion**
-This project exemplifies the **8051 microcontroller** family's versatility, showcasing how to effectively handle analog inputs through external components. With this setup, you can seamlessly read and display analog signals, enabling various applications in sensing and control systems.
 
 ### **Internal Circuit of ADC0804**
 The internal circuitry of **ADC0804** is sophisticated, utilizing components like gates, flip-flops, shift registers, and a SAR latch. The **SAR (Successive Approximation Register)** latch converts continuous analog signals into discrete digital signals by performing binary searches across quantization levels. The integrated tri-state register holds data until a low-to-high pulse is applied, while an **8-bit shift register** sequentially outputs data in 8-bit formats.
@@ -49,6 +99,12 @@ The internal circuitry of **ADC0804** is sophisticated, utilizing components lik
 
 ### **Example Circuit in Proteus**
 To visualize the ADC0804 in action, follow these steps to build the example circuit in **Proteus**:
+
+<p align="center">
+  <img src="https://github.com/gmostofabd/8051-Analog/blob/e5c98394239fc9e77b0fe4b371b81433b1ef98bd/assets/images/AD0804_Simulation2.png" alt="Image 1" style="width: 30%; margin-right: 1%;">
+  <img src="https://github.com/gmostofabd/8051-Analog/blob/e5c98394239fc9e77b0fe4b371b81433b1ef98bd/assets/images/AD0804_Simulation3.png" alt="Image 2" style="width: 30%; margin-right: 1%;">
+  <img src="https://github.com/gmostofabd/8051-Analog/blob/e5c98394239fc9e77b0fe4b371b81433b1ef98bd/assets/images/AD0804_Simulation4.png" alt="Image 3" style="width: 30%;">
+</p>
 
 1. Connect a variable voltage source to the **analog input** pins.
 2. Use logic states for controlling and visualizing the output.
@@ -61,25 +117,9 @@ The complete circuit will resemble the provided example, allowing you to convert
 
 
 
-ADC0804 Introduction
-There are multiple kinds of Analog to Digital Converters (ADC) which are used to convert the analog signal for microprocessors or controllers. Every “ADC” has its own specification and advantages on the basis of the requirement. Here we are going to discuss “ADC0804 IC” which is known as the low voltage 8-bit analog to Digital Converter.
-
-ADC0804 is a low voltage IC use to convert the low voltage analog signal to an 8-bit digital signal. It works with 0-5 Volts, has 1 Analog input and 8 output pins. ADC0804 comes with an internal clock but to increase or change the clock cycle we could use the external clock. Always keep in mind that conversion speed cannot be faster than 110us either we are using an internal clock or external clock.
 
 
-
-
-## 🔑 **Keywords**
-
-**[AD0804](https://www.analog.com/en/products/ad0804.html)** | 
-**[8051 Microcontroller](https://www.atmel.com/products/microcontrollers/8051.aspx)** | 
-**[Analog-to-Digital Converter](https://en.wikipedia.org/wiki/Analog-to-digital_converter)** | 
-**[Assembly Language](https://en.wikipedia.org/wiki/Assembly_language)** | 
-**[Microcontroller Programming](https://en.wikipedia.org/wiki/Microcontroller)**
-
----
-
-## 📖 **Key Features**
+## 📖 **Features of this Repository**
 
 <div align="center">
 
@@ -138,54 +178,6 @@ The potentiometer's position determines the voltage supplied to the ADC, affecti
 
 ---
 
-# 🌟 **AD0804 Analog-to-Digital Converter**
-The AD0804 ADC is a reliable and efficient choice for converting analog signals to digital form. Its simplicity and low power requirements make it ideal for a wide range of applications, from data acquisition systems to embedded solutions.
-
-### Basic Circuit Diagram:
-
-
-<p align="center">
-  <img src="https://github.com/gmostofabd/8051-Analog/blob/23bd514de03203891672ca09df32e5ae9720b674/assets/images/adc_model2.png" alt="AD0804 Circuit Diagram" width="60%">
-</p>
-
-## 🛠️ **Key Features:**
-
-<div align="center">
-
-| Feature                     | Description                                                             |
-|-----------------------------|-------------------------------------------------------------------------|
-| 🔢 **8-Bit Resolution**      | Converts analog signals to 256 discrete digital levels.                 |
-| ⚡ **Single-Supply Operation** | Works on a simple +5V supply for ease of use.                          |
-| ⏱️ **Fast Sampling Rate**     | Supports up to 10 kHz for moderate-speed applications.                 |
-| 📈 **Wide Input Voltage Range** | Typically 0V to V_REF for versatile applications.                     |
-| 🔌 **Internal Reference Voltage** | Reduces external components for simpler designs.                     |
-| 💻 **Easy Digital Interface**  | Parallel output makes it simple to connect with microcontrollers.      |
-| 💡 **Low Power Consumption**   | Ideal for portable and battery-operated devices.                       |
-
-</div>
-
----
----
-
-## 📊 **AD0804 Pin Description**
-
-<div align="center">
-
-| Pin Number | Pin Name   | Description                                 |
-|------------|------------|---------------------------------------------|
-| 1          | V_ref     | Reference voltage input                     |
-| 2          | GND       | Ground connection                           |
-| 3          | Vin       | Analog input voltage from potentiometer     |
-| 4          | D0-D7     | Data output lines (8-bit)                  |
-| 5          | CS        | Chip select                                 |
-| 6          | RD        | Read control                                |
-| 7          | WR        | Write control                               |
-| 8          | ALE       | Address latch enable                        |
-| 9          | INTR      | Interrupt output for conversion completion   |
-
-</div>
-
----
 
 ## 🤝 **Contributing**
 
