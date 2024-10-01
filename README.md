@@ -23,6 +23,40 @@ This repository demonstrates how to read an analog value from a **potentiometer*
 
 ---
 
+## 📖 **Features of this Repository**
+
+<div align="center">
+
+| Feature                           | Description                                                                     |
+|-----------------------------------|---------------------------------------------------------------------------------|
+| 🎛️ **Analog Input**               | Reads voltage from a potentiometer and converts it to a digital value           |
+| 💡 **LED Bar Graph Display**       | Displays the binary equivalent on an 8-bit LED bar graph                        |
+| 🖥️ **LCD Display**                | Shows the analog reading in real-time on an LCD                                 |
+| 🔧 **Microcontroller Programming** | Written in **Assembly language** for the AT89C51                                |
+| 🔌 **Hardware Integration**        | Designed for seamless integration with physical components                       |
+
+</div>
+
+---
+
+## 📦 **Contents**
+
+<div align="center">
+
+| File                          | Description                                                                 |
+|-------------------------------|-----------------------------------------------------------------------------|
+| `AD0804_Analog_Reading.asm`    | Assembly source code for reading analog values using AD0804                 |
+| `AD0804_Analog_Reading.hex`    | Precompiled HEX file for direct microcontroller upload                      |
+| `Proteus_Simulation.pdsprj`    | Proteus Design Suite simulation file                                        |
+| **Screenshots**                | Demonstrations from the Proteus simulation                                  |
+
+</div>
+
+---
+
+
+
+
 # 🌟 **AD0804 Analog-to-Digital Converter**
 The AD0804 ADC is a reliable and efficient choice for converting analog signals to digital form. Its simplicity and low power requirements make it ideal for a wide range of applications, from data acquisition systems to embedded solutions.
 
@@ -33,7 +67,7 @@ The AD0804 ADC is a reliable and efficient choice for converting analog signals 
   <img src="https://github.com/gmostofabd/8051-Analog/blob/23bd514de03203891672ca09df32e5ae9720b674/assets/images/adc_model2.png" alt="AD0804 Circuit Diagram" width="60%">
 </p>
 
-## 🛠️ **Key Features:**
+## 🛠️ **AD0804 Key Features:**
 
 <div align="center">
 
@@ -119,36 +153,7 @@ The complete circuit will resemble the provided example, allowing you to convert
 
 
 
-## 📖 **Features of this Repository**
 
-<div align="center">
-
-| Feature                           | Description                                                                     |
-|-----------------------------------|---------------------------------------------------------------------------------|
-| 🎛️ **Analog Input**               | Reads voltage from a potentiometer and converts it to a digital value           |
-| 💡 **LED Bar Graph Display**       | Displays the binary equivalent on an 8-bit LED bar graph                        |
-| 🖥️ **LCD Display**                | Shows the analog reading in real-time on an LCD                                 |
-| 🔧 **Microcontroller Programming** | Written in **Assembly language** for the AT89C51                                |
-| 🔌 **Hardware Integration**        | Designed for seamless integration with physical components                       |
-
-</div>
-
----
-
-## 📦 **Contents**
-
-<div align="center">
-
-| File                          | Description                                                                 |
-|-------------------------------|-----------------------------------------------------------------------------|
-| `AD0804_Analog_Reading.asm`    | Assembly source code for reading analog values using AD0804                 |
-| `AD0804_Analog_Reading.hex`    | Precompiled HEX file for direct microcontroller upload                      |
-| `Proteus_Simulation.pdsprj`    | Proteus Design Suite simulation file                                        |
-| **Screenshots**                | Demonstrations from the Proteus simulation                                  |
-
-</div>
-
----
 
 ## 🛠️ **Hardware & Circuit Information**
 
